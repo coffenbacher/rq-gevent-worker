@@ -10,7 +10,7 @@ import signal
 import gevent
 import gevent.pool
 from rq import Worker
-from rq.job import Status
+from rq.job import JobStatus
 from rq.timeouts import BaseDeathPenalty, JobTimeoutException
 from rq.worker import StopRequested, green, blue
 from rq.exceptions import DequeueTimeout
