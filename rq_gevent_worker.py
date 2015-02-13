@@ -10,7 +10,12 @@ import signal
 import gevent
 import gevent.pool
 from rq import Worker
-from rq.job import JobStatus
+
+try:
+    from rq.job import Job as JobStatus # rq < 0.5 backwards compatibility 
+except ImportError:
+    from rq.job import JobStatus # rq >= 0.5
+    
 from rq.timeouts import BaseDeathPenalty, JobTimeoutException
 from rq.worker import StopRequested, green, blue
 from rq.exceptions import DequeueTimeout
